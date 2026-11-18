@@ -1,0 +1,4 @@
+import {Resend} from 'resend';
+import {Notification} from '../models/index.js';
+export async function queueEmail(to:string,subject:string,text:string){return Notification.create({to,subject,text:`Rapid Novid CNA\n\n${text}\n\nPlease contact the academy with questions. Do not reply with sensitive information.`})}
+export async function deliverPending(){if(!process.env.RESEND_API_KEY||!process.env.EMAIL_FROM)return {sent:0,configured:false};const client=new Resend(process.env.RESEND_API_KEY);const rows=await Notification.find({status:'Pending',attempts:{$lt:5}}).limit(25);let sent=0;for(const row of rows){const result=await client.emails.send({from:process.env.EMAIL_FROM,to:row.to,subject:row.subject,text:row.text},{idempotencyKey:String(row._id)});row.attempts+=1;if(result.error){row.status=row.attempts>=5?'Failed':'Pending'}else{row.status='Sent';row.sentAt=new Date();sent++}await row.save()}return {sent,configured:true}}

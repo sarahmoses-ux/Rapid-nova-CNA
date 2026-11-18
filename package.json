@@ -1,0 +1,27 @@
+{
+    "name":  "rapid-novid-cna",
+    "private":  true,
+    "version":  "0.1.0",
+    "type":  "module",
+    "workspaces":  [
+                       "frontend",
+                       "backend"
+                   ],
+    "scripts":  {
+                    "dev":  "npm run dev -w frontend",
+                    "dev:api":  "npm run dev -w backend",
+                    "build":  "npm run build -w frontend \u0026\u0026 npm run build -w backend",
+                    "typecheck":  "npm run typecheck --workspaces",
+                    "test":  "npm run test -w backend",
+                    "lint":  "eslint frontend/src backend/src",
+                    "test:e2e":  "playwright test"
+                },
+    "devDependencies":  {
+                            "@eslint/js":  "^9.39.0",
+                            "@playwright/test":  "^1.65.1",
+                            "eslint":  "^9.39.0",
+                            "globals":  "^16.5.0",
+                            "typescript":  "^5.9.3",
+                            "typescript-eslint":  "^8.46.0"
+                        }
+}

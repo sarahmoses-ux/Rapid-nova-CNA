@@ -1,0 +1,47 @@
+.heartbeat-signature{max-width:365px;margin:-5px 0 24px;color:var(--teal)}
+.heartbeat-signature svg{display:block;width:100%;height:34px;overflow:visible}
+.heartbeat-signature path{stroke:currentColor;stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+.heartbeat-track{opacity:.13}
+.heartbeat-ink{stroke-dasharray:1;stroke-dashoffset:0;animation:heartbeat-write 2.4s .35s cubic-bezier(.45,0,.2,1) both}
+.heartbeat-label{display:block;letter-spacing:.16em;font-size:.55rem;font-weight:650;color:#62847f;margin-top:2px;animation:copy-arrive .8s 1.15s both}
+.hero-copy h1>span{position:relative;display:inline-block}
+.hero-copy h1>span:after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:7px;background:#0d94881a;clip-path:polygon(0 50%,100% 0,98% 85%,2% 100%);transform-origin:left;animation:care-underline .9s .65s cubic-bezier(.22,1,.36,1) both}
+.hero-photo{clip-path:inset(0);animation:clinical-reveal 1.25s cubic-bezier(.22,1,.36,1) both}
+.steps.has-journey-wire{position:relative;isolation:isolate}
+.has-journey-wire>.step:after{display:none}
+.journey-wire{position:absolute;z-index:-1;pointer-events:none;overflow:visible;fill:none}
+.journey-wire-horizontal{top:2px;left:10%;width:80%;height:60px}
+.journey-wire-vertical{display:none}
+.journey-wire path{vector-effect:non-scaling-stroke;stroke-width:1.5;stroke-linecap:round}
+.journey-wire-base{stroke:#dceae6}
+.journey-wire-ink{stroke:#0d9488;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--journey-progress,0));transition:stroke-dashoffset .15s linear}
+.has-journey-wire .step-icon{background:#f2f8f6;box-shadow:0 0 0 7px #fff;transition:background .45s,color .45s,box-shadow .45s,transform .45s var(--ease-out)}
+.has-journey-wire .step-icon>span{transition:background .4s,transform .5s var(--ease-out);background:#94b8b0}
+.has-journey-wire .journey-reached .step-icon{background:#dcefe8;color:#087f75;box-shadow:0 0 0 7px #fff,0 0 0 8px #c6e3da}
+.has-journey-wire .journey-reached .step-icon>span{background:var(--teal);transform:scale(1.08)}
+.program-feature,.path-card{position:relative;isolation:isolate}
+.program-feature:before,.path-card:before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .4s;background:radial-gradient(260px circle at var(--light-x,50%) var(--light-y,50%),#0d948814,transparent 75%)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .program-feature:hover:before,.path-card:hover:before{opacity:1}
+ .program-feature:hover .program-image img{transform:scale(1.06) rotate(-.7deg)}
+ .program-feature:hover .image-label{transform:translateY(-2px);box-shadow:0 5px 15px #102a4314}
+ .program-feature:hover .circle-link{transform:rotate(-35deg);border-radius:9px}
+ .program-feature:hover .circle-link svg{transform:rotate(35deg)}
+ .path-card:hover>.icon-soft svg{animation:care-greeting .75s var(--ease-out)}
+}
+.image-label,.circle-link svg{transition:transform .5s var(--ease-out),box-shadow .4s,border-radius .4s}
+.cta-art{stroke-dasharray:900;stroke-dashoffset:0;animation:cta-trace 2s 1s ease both}
+@keyframes heartbeat-write{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes care-underline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes clinical-reveal{from{opacity:.3;clip-path:inset(0 0 0 100%)}to{opacity:1;clip-path:inset(0)}}
+@keyframes care-greeting{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}55%{transform:rotate(8deg)}80%{transform:rotate(-4deg)}}
+@keyframes cta-trace{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@media(max-width:640px){
+ .heartbeat-signature{max-width:280px;margin:0 0 22px}.heartbeat-signature svg{height:27px}.heartbeat-label{font-size:.49rem;letter-spacing:.12em}
+ .journey-wire-horizontal{display:none}.journey-wire-vertical{display:block;left:0;top:26px;bottom:26px;height:calc(100% - 52px);width:53px}
+ .hero-photo{animation-name:photo-arrive}.hero-copy h1>span:after{height:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-photo{clip-path:none}.heartbeat-ink{stroke-dashoffset:0}.journey-wire-ink{stroke-dashoffset:0;transition:none}
+ .program-feature:before,.path-card:before{display:none}.hero-copy h1>span:after{transform:none}
+}

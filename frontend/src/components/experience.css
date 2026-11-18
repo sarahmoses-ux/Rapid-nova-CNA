@@ -1,0 +1,65 @@
+:root{--ease-out:cubic-bezier(.22,1,.36,1)}
+html{scroll-behavior:smooth;scroll-padding-top:115px}
+header{position:sticky;top:0;transition:box-shadow .3s ease,background .3s ease}
+.has-scrolled header{box-shadow:0 6px 28px #102a4310}
+.reading-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;pointer-events:none}
+.reading-progress>div{height:100%;background:#0d9488;transform:scaleX(0);transform-origin:left;will-change:transform}
+.btn{position:relative;transition:transform .25s var(--ease-out),box-shadow .25s ease,background .2s ease,border-color .2s ease}
+.btn:active{transform:translateY(1px) scale(.98)}
+.header nav>a,.nav-drop>a{position:relative}
+.header nav>a:after,.nav-drop>a:after{content:'';position:absolute;left:0;bottom:-9px;width:100%;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.header nav a.active:after{transform:scaleX(1)}
+.nav-drop>a>svg{transition:transform .25s ease}
+.nav-drop:focus-within>a>svg{transform:rotate(180deg)}
+.drop-content{transform-origin:top;animation:menu-arrive .2s var(--ease-out)}
+.header nav.open{animation:menu-arrive .3s var(--ease-out)}
+.hero-photo{animation:photo-arrive 1.15s var(--ease-out) both}
+.hero-photo>img{animation:photo-settle 1.8s var(--ease-out) both}
+.hero-copy>h1{animation:copy-arrive .85s .08s var(--ease-out) both}
+.hero-copy>p{animation:copy-arrive .85s .19s var(--ease-out) both}
+.hero-buttons{animation:copy-arrive .85s .29s var(--ease-out) both}
+.hero-note{animation:copy-arrive .8s .39s var(--ease-out) both}
+.photo-caption{animation:copy-arrive .9s .5s var(--ease-out) both}
+.hero-bottom span{animation:copy-arrive .7s .3s var(--ease-out) both}
+.hero-bottom span:nth-child(2){animation-delay:.4s}.hero-bottom span:nth-child(3){animation-delay:.5s}
+.program-feature,.path-card,.info-card{transition:transform .35s var(--ease-out),box-shadow .35s ease,border-color .3s ease}
+.program-image img,.about-image>img{transition:transform .8s var(--ease-out)}
+.program-image{overflow:hidden}.about-image{isolation:isolate}.about-image>img{transform-origin:center}
+.circle-link{transition:background .25s,color .25s,transform .35s var(--ease-out)}
+.text-link svg,.footer-portal svg{transition:transform .3s var(--ease-out)}
+.icon-soft,.step-icon{transition:transform .35s var(--ease-out),background .3s,color .3s}
+.step:after{transform-origin:left;transition:background .35s}
+.faq-item>button svg{transition:transform .3s var(--ease-out)}
+.faq-item:has(button[aria-expanded=true]){border-bottom-color:#93bfb7}
+.faq-item:has(button[aria-expanded=true])>button{color:var(--teal)}
+.faq-item>p{animation:answer-arrive .32s var(--ease-out)}
+input,select,textarea{transition:border-color .2s,box-shadow .2s,background .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px #0d948810}
+.form-card>h2,.form-card>.form-grid,.form-card>.review{animation:copy-arrive .35s var(--ease-out)}
+.tabs>button,.segments>button,.portal-sidebar nav button{transition:background .2s,color .2s,border-color .2s}
+tbody tr{transition:background .2s}tbody tr:hover{background:#f5faf8}
+.back-to-top{position:fixed;bottom:27px;right:27px;z-index:40;border:1px solid #d4e6e0;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;background:#fff;color:var(--teal);box-shadow:0 4px 20px #102a4312;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .3s var(--ease-out),visibility .25s,background .2s}
+.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:#eaf6f1}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px #087f7525}
+ .btn.outline:hover{box-shadow:0 6px 16px #102a4310}
+ .header nav>a:hover:after,.nav-drop:hover>a:after{transform:scaleX(1)}
+ .nav-drop:hover>a>svg{transform:rotate(180deg)}
+ .program-feature:hover{transform:translateY(-6px);box-shadow:0 18px 35px #102a4312;border-color:#b8d6cf}
+ .program-feature:hover .program-image img{transform:scale(1.045)}
+ .program-feature:hover .circle-link{background:var(--teal);color:white;transform:translateX(2px)}
+ .path-card:hover,.info-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #102a430b;border-color:#bed9d3}
+ .trust-strip>div:hover .icon-soft,.path-card:hover .icon-soft{transform:translateY(-3px) rotate(-4deg);background:#dcefe7}
+ .step:hover .step-icon{transform:translateY(-5px);background:var(--teal);color:white}
+ .step:hover:after{background:#94c8bc}
+ .text-link:hover svg,.footer-portal:hover svg{transform:translateX(4px)}
+ .faq-item>button:hover svg{transform:rotate(90deg)}
+}
+@keyframes copy-arrive{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes photo-arrive{from{opacity:0}to{opacity:1}}
+@keyframes photo-settle{from{transform:scale(1.065)}to{transform:scale(1)}}
+@keyframes menu-arrive{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+@keyframes answer-arrive{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){html{scroll-padding-top:92px}.back-to-top{right:17px;bottom:17px;width:42px;height:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reading-progress>div{will-change:auto}*,*:before,*:after{animation:none!important;transition:none!important}.btn:hover,.program-feature:hover,.info-card:hover{transform:none}}

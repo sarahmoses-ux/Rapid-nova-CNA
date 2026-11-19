@@ -10,7 +10,7 @@
     "scripts":  {
                     "dev":  "npm run dev -w frontend",
                     "dev:api":  "npm run dev -w backend",
-                    "build":  "npm run build -w frontend \u0026\u0026 npm run build -w backend",
+                    "build":  "npm run typecheck -w frontend && npm run build -w frontend && npm run build -w backend",
                     "typecheck":  "npm run typecheck --workspaces",
                     "test":  "npm run test -w backend",
                     "lint":  "eslint frontend/src backend/src",
